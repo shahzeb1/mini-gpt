@@ -1,0 +1,15 @@
+body{
+  padding-left: 30pt;
+  padding-right: 30pt;
+  padding-top: 30pt;
+}
+
+textarea{
+  width: 100%;
+  font-size: 2em;
+  height: 100pt;
+}
+
+.response-zone{
+  font-size: 2em;
+}
