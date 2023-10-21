@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { promptRequest } from "./lib";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+
 import "./App.css";
 
 function App() {
@@ -16,15 +19,15 @@ function App() {
 
   return (
     <>
-      <textarea
+      <Textarea
         placeholder="Your prompt here"
         value={prompt}
         onChange={(e) => setPrompt(e.target.value)}
         disabled={loading}
-      ></textarea>
-      <button onClick={handleGoClick} disabled={loading}>
+      ></Textarea>
+      <Button onClick={handleGoClick} disabled={loading}>
         Go
-      </button>
+      </Button>
       {response && <div className="response-zone">{response}</div>}
     </>
   );
