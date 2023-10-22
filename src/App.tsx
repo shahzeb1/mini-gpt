@@ -1,12 +1,6 @@
 import { useState, useEffect } from "react";
-import {
-  promptRequest,
-  WORDS,
-  Response,
-  PROMPT_VOICE,
-  voices,
-  ResponseWithVoice,
-} from "./lib";
+import { WORDS, PROMPT_VOICE, voices } from "./lib";
+import { Response, promptRequest, ResponseWithVoice } from "./clients";
 
 import { Textarea } from "@/components/ui/textarea";
 
