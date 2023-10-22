@@ -1,21 +1,28 @@
 const ENDPOINT = "https://llama.shahzeb001.workers.dev/";
 
 export interface Response {
-  response: string;
+  role: "system" | "user";
+  content: string;
 }
 
-export async function promptRequest(prompt: string): Promise<Response> {
+interface PromptRequest {
+  messages: Response[];
+}
+
+export async function promptRequest(
+  messages: PromptRequest
+): Promise<Response> {
   const r = await fetch(ENDPOINT, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ prompt }),
+    body: JSON.stringify(messages),
   });
 
-  const j = await r.json();
+  const { response } = await r.json();
 
-  return j;
+  return { content: response, role: "system" };
 }
 
 export const WORDS = [
@@ -35,3 +42,6 @@ export const WORDS = [
   "a review",
   "a description",
 ];
+
+export const BREVITY_PROMPT = (prompt: string) =>
+  `Within 4 sentences or less, answer the following prompt: ${prompt}`;
