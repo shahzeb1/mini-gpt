@@ -2,11 +2,18 @@ const ENDPOINT = "https://llama.shahzeb001.workers.dev/";
 
 export interface Response {
   role: "system" | "user";
+  /** content is the prompt we send to the server */
   content: string;
+  /** user input is the string the user typed in */
+  userInput?: string;
+}
+
+export interface ResponseWithVoice extends Response {
+  voice?: voices;
 }
 
 interface PromptRequest {
-  messages: Response[];
+  messages: ResponseWithVoice[];
 }
 
 export async function promptRequest(
@@ -24,6 +31,13 @@ export async function promptRequest(
 
   return { content: response, role: "system" };
 }
+
+export const AUTHOR_IMAGES = {
+  "Jane Austen": "janeausten.jpg",
+  "Ernest Hemingway": "ernesthemingway.jpg",
+  "John Steinbeck": "johnsteinbeck.jpg",
+  "Mark Twain": "marktwain.jpg",
+};
 
 export const WORDS = [
   "a poem",
@@ -43,13 +57,13 @@ export const WORDS = [
   "a description",
 ];
 
-export type voices =
-  | "none"
-  | "brevity"
+export type voices = ("none" | "brevity") | authors;
+export type authors =
   | "Jane Austen"
   | "Ernest Hemingway"
   | "John Steinbeck"
   | "Mark Twain";
+
 export const PROMPT_VOICE = (prompt: string, voice: voices): string => {
   switch (voice) {
     case "brevity":

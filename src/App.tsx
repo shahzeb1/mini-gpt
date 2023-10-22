@@ -1,5 +1,14 @@
 import { useState, useEffect } from "react";
-import { promptRequest, WORDS, Response, PROMPT_VOICE, voices } from "./lib";
+import {
+  promptRequest,
+  WORDS,
+  Response,
+  PROMPT_VOICE,
+  voices,
+  AUTHOR_IMAGES,
+  ResponseWithVoice,
+  authors,
+} from "./lib";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -12,12 +21,18 @@ import {
   SelectLabel,
 } from "@/components/ui/select";
 import { Progress } from "@/components/ui/progress";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 import "./App.css";
 
 function App() {
   const [prompt, setPrompt] = useState("");
-  const [responses, setResponses] = useState<Response[]>([]);
+  const [responses, setResponses] = useState<ResponseWithVoice[]>([]);
   const [randomWord, setRandomWord] = useState("");
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -48,19 +63,20 @@ function App() {
 
   async function handleGoClick() {
     setLoading(true);
-    const userInputBrevity: Response = {
+    const userInput: Response = {
       content: PROMPT_VOICE(prompt, promptVoice),
       role: "user",
+      userInput: prompt,
     };
-    const req = [...responses, userInputBrevity];
+    const req = [...responses, userInput];
     const res = await promptRequest({ messages: req });
+    const resWithVoice: ResponseWithVoice = {
+      ...res,
+      voice: promptVoice,
+    };
 
     setPrompt("");
-    const userInput: Response = {
-      content: prompt,
-      role: "user",
-    };
-    setResponses([...responses, userInput, res]);
+    setResponses([...responses, userInput, resWithVoice]);
     setLoading(false);
   }
 
@@ -125,12 +141,31 @@ function App() {
           >
             <div className="self-center p-4">
               <div
-                className={`bot-icon rounded-sm ${
+                className={`bot-icon rounded-sm overflow-hidden ${
                   response.role === "system" ? "bg-teal-400" : "bg-slate-400"
                 }`}
-              ></div>
+              >
+                {response.voice && AUTHOR_IMAGES[response.voice as authors] && (
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger>
+                        <img
+                          src={`/public/authors/${
+                            AUTHOR_IMAGES[response.voice as authors]
+                          }`}
+                          alt={response.voice}
+                          className="opacity-70"
+                        />
+                      </TooltipTrigger>
+                      <TooltipContent>{response.voice}</TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                )}
+              </div>
             </div>
-            <div className="p-4 prose lg:prose-xl">{response.content}</div>
+            <div className="p-4 prose lg:prose-xl">
+              {response.userInput ? response.userInput : response.content}
+            </div>
           </div>
         ))}
 
@@ -145,7 +180,7 @@ function App() {
         ></Textarea>
       </div>
 
-      <div className="flex justify-between">
+      <div className="flex justify-between mb-1">
         <Button onClick={handleGoClick} disabled={loading}>
           {responses.length ? "Respond" : "Go"}
         </Button>
