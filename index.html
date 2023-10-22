@@ -9,5 +9,20 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Google analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-15315607-5"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-15315607-5");
+    </script>
   </body>
 </html>
