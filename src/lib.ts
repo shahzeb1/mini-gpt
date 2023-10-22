@@ -1,3 +1,8 @@
+import janeAusten from "../public/janeausten.jpg";
+import ernestHemingway from "../public/ernesthemingway.jpg";
+import johnSteinbeck from "../public/johnsteinbeck.jpg";
+import markTwain from "../public/marktwain.jpg";
+
 const ENDPOINT = "https://llama.shahzeb001.workers.dev/";
 
 export interface Response {
@@ -33,10 +38,10 @@ export async function promptRequest(
 }
 
 export const AUTHOR_IMAGES = {
-  "Jane Austen": "janeausten.jpg",
-  "Ernest Hemingway": "ernesthemingway.jpg",
-  "John Steinbeck": "johnsteinbeck.jpg",
-  "Mark Twain": "marktwain.jpg",
+  "Jane Austen": janeAusten,
+  "Ernest Hemingway": ernestHemingway,
+  "John Steinbeck": johnSteinbeck,
+  "Mark Twain": markTwain,
 };
 
 export const WORDS = [

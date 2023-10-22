@@ -150,9 +150,7 @@ function App() {
                     <Tooltip>
                       <TooltipTrigger>
                         <img
-                          src={`/public/authors/${
-                            AUTHOR_IMAGES[response.voice as authors]
-                          }`}
+                          src={AUTHOR_IMAGES[response.voice as authors]}
                           alt={response.voice}
                           className="opacity-70"
                         />
