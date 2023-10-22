@@ -68,6 +68,32 @@ function App() {
         </h3>
       </div>
 
+      {loading && (
+        <div className="loading flex flex-col items-center justify-center">
+          <Progress value={progress} className="w-[60%]" />
+          <div className="mt-4 text-sm text-slate-700">
+            Sit tight, an NVIDIA GPU somwehere is putting in work...
+          </div>
+        </div>
+      )}
+
+      {!response && !loading && (
+        <div className="loading flex flex-col items-center justify-center">
+          <div className="mt-4 text-sm text-slate-500 w-90">
+            You can ask it pretty much anything perhaps {randomWord}.
+          </div>
+        </div>
+      )}
+
+      {response && !loading && (
+        <div className="flex mt-4 mb-4 bg-slate-200 rounded-sm">
+          <div className="self-center p-4">
+            <div className="bot-icon rounded-sm bg-slate-400"></div>
+          </div>
+          <div className="p-4 prose lg:prose-xl">{response}</div>
+        </div>
+      )}
+
       <div className="prompt-zone">
         <Textarea
           placeholder="Your prompt here"
@@ -103,32 +129,6 @@ function App() {
           </Select>
         </div>
       </div>
-
-      {loading && (
-        <div className="loading flex flex-col items-center justify-center">
-          <Progress value={progress} className="w-[60%]" />
-          <div className="mt-4 text-sm text-slate-700">
-            Sit tight, an NVIDIA GPU somwehere is putting in work...
-          </div>
-        </div>
-      )}
-
-      {!response && !loading && (
-        <div className="loading flex flex-col items-center justify-center">
-          <div className="mt-4 text-sm text-slate-500 w-90">
-            You can ask it pretty much anything perhaps {randomWord}.
-          </div>
-        </div>
-      )}
-
-      {response && !loading && (
-        <div className="flex mt-4 bg-slate-200 rounded-sm">
-          <div className="self-center p-4">
-            <div className="bot-icon rounded-sm bg-slate-400"></div>
-          </div>
-          <div className="p-4 prose lg:prose-xl">{response}</div>
-        </div>
-      )}
     </div>
   );
 }
