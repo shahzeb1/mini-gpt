@@ -1,7 +1,7 @@
-import janeAusten from "../public/janeausten.jpg";
-import ernestHemingway from "../public/ernesthemingway.jpg";
-import johnSteinbeck from "../public/johnsteinbeck.jpg";
-import markTwain from "../public/marktwain.jpg";
+import janeAusten from "../public/authors/janeausten.jpg";
+import ernestHemingway from "../public/authors/ernesthemingway.jpg";
+import johnSteinbeck from "../public/authors/johnsteinbeck.jpg";
+import markTwain from "../public/authors/marktwain.png";
 
 const ENDPOINT = "https://llama.shahzeb001.workers.dev/";
 
