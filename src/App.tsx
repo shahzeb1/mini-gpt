@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { promptRequest } from "./lib";
+import { promptRequest, WORDS } from "./lib";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -18,6 +18,7 @@ import "./App.css";
 function App() {
   const [prompt, setPrompt] = useState("");
   const [response, setResponse] = useState("");
+  const [randomWord, setRandomWord] = useState("");
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
 
@@ -35,6 +36,14 @@ function App() {
 
     return () => clearTimeout(timer);
   }, [progress, loading]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRandomWord(WORDS[Math.floor(Math.random() * WORDS.length)]);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  });
 
   async function handleGoClick() {
     setLoading(true);
@@ -106,10 +115,8 @@ function App() {
 
       {!response && !loading && (
         <div className="loading flex flex-col items-center justify-center">
-          <div className="mt-4 text-sm text-slate-500 w-80">
-            You can ask it pretty much anything. <br />A poem, a story, a joke,
-            a song, a recipe, a quote, a fact, a question, a riddle, a secret, a
-            confession, anything.
+          <div className="mt-4 text-sm text-slate-500 w-90">
+            You can ask it pretty much anything perhaps {randomWord}.
           </div>
         </div>
       )}

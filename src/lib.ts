@@ -17,3 +17,21 @@ export async function promptRequest(prompt: string): Promise<Response> {
 
   return j;
 }
+
+export const WORDS = [
+  "a poem",
+  "a story",
+  "a joke",
+  "a song",
+  "a recipe",
+  "a quote",
+  "a fact",
+  "a question",
+  "a riddle",
+  "a secret",
+  "a confession",
+  "a compliment",
+  "a complaint",
+  "a review",
+  "a description",
+];
