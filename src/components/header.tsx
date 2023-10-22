@@ -2,6 +2,8 @@
  * Header is a component that renders the header of the app.
  */
 
+import { ModeToggle } from "./mode-toggle";
+
 const Header = () => {
   return (
     <div>
@@ -9,32 +11,37 @@ const Header = () => {
         <h2 className="text-lg font-semibold">
           <a href="/">Mini GPT</a>
         </h2>
-        <h3 className="text-sm text-slate-500">
-          an experiment by{" "}
-          <a
-            href="https://shahzeb.co"
-            className="underline underline-offset-4"
-            target="_blank"
-          >
-            @shahzeb
-          </a>
-          .{" "}
-          <a
-            href="https://shahzeb.co"
-            className="underline underline-offset-4"
-            target="_blank"
-          >
-            blog
-          </a>{" "}
-          &cup;{" "}
-          <a
-            href="https://shahzeb.co"
-            className="underline underline-offset-4"
-            target="_blank"
-          >
-            code
-          </a>
-        </h3>
+        <div className="flex flex-row items-center">
+          <h3 className="text-sm text-slate-500 dark:text-slate-300">
+            an experiment by{" "}
+            <a
+              href="https://shahzeb.co"
+              className="underline underline-offset-4"
+              target="_blank"
+            >
+              @shahzeb
+            </a>
+            .{" "}
+            <a
+              href="https://shahzeb.co"
+              className="underline underline-offset-4"
+              target="_blank"
+            >
+              blog
+            </a>{" "}
+            &cup;{" "}
+            <a
+              href="https://shahzeb.co"
+              className="underline underline-offset-4"
+              target="_blank"
+            >
+              code
+            </a>
+          </h3>
+          <div className="ml-2">
+            <ModeToggle />
+          </div>
+        </div>
       </div>
     </div>
   );

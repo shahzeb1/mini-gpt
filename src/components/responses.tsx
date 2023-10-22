@@ -43,7 +43,7 @@ const Responses = (props: Props) => {
           )}
         </div>
       </div>
-      <div className="p-4 prose lg:prose-xl">
+      <div className="p-4 prose lg:prose-xl text-black">
         {response.userInput ? response.userInput : response.content}
       </div>
     </div>

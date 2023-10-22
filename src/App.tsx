@@ -74,7 +74,7 @@ function App() {
       {loading && (
         <div className="loading flex flex-col items-center justify-center">
           <Progress value={progress} className="w-[60%]" />
-          <div className="mt-4 text-sm text-slate-700">
+          <div className="mt-4 text-sm text-slate-700 dark:text-slate-300">
             Sit tight, an NVIDIA GPU somwehere is putting in work...
           </div>
         </div>
@@ -82,7 +82,7 @@ function App() {
 
       {!responses.length && !loading && (
         <div className="loading flex flex-col items-center justify-center">
-          <div className="mt-4 text-sm text-slate-700 w-90">
+          <div className="mt-4 text-sm text-slate-700 w-90 dark:text-slate-300">
             You can ask it pretty much anything: perhaps {randomWord}.
           </div>
         </div>
