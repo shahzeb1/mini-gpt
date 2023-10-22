@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { promptRequest } from "./lib";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -11,6 +11,7 @@ import {
   SelectGroup,
   SelectLabel,
 } from "@/components/ui/select";
+import { Progress } from "@/components/ui/progress";
 
 import "./App.css";
 
@@ -18,6 +19,22 @@ function App() {
   const [prompt, setPrompt] = useState("");
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(false);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    if (loading === false) {
+      setProgress(0);
+      return;
+    }
+
+    const timer = setInterval(() => {
+      const rand = Math.floor(Math.random() * (20 - 5 + 1) + 5);
+      const newProgress = progress + rand;
+      setProgress(newProgress);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [progress, loading]);
 
   async function handleGoClick() {
     setLoading(true);
@@ -78,7 +95,26 @@ function App() {
         </div>
       </div>
 
-      {response && (
+      {loading && (
+        <div className="loading flex flex-col items-center justify-center">
+          <Progress value={progress} className="w-[60%]" />
+          <div className="mt-4 text-sm text-slate-700">
+            Sit tight, an NVIDIA GPU somwehere is putting in work...
+          </div>
+        </div>
+      )}
+
+      {!response && !loading && (
+        <div className="loading flex flex-col items-center justify-center">
+          <div className="mt-4 text-sm text-slate-500 w-80">
+            You can ask it pretty much anything. <br />A poem, a story, a joke,
+            a song, a recipe, a quote, a fact, a question, a riddle, a secret, a
+            confession, anything.
+          </div>
+        </div>
+      )}
+
+      {response && !loading && (
         <div className="flex mt-4 bg-slate-200 rounded-sm">
           <div className="self-center p-4">
             <div className="bot-icon rounded-sm bg-slate-400"></div>
