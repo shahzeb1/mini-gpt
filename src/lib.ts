@@ -43,5 +43,26 @@ export const WORDS = [
   "a description",
 ];
 
-export const BREVITY_PROMPT = (prompt: string) =>
-  `Within 4 sentences or less, answer the following prompt: ${prompt}`;
+export type voices =
+  | "none"
+  | "brevity"
+  | "Jane Austen"
+  | "Ernest Hemingway"
+  | "John Steinbeck"
+  | "Mark Twain";
+export const PROMPT_VOICE = (prompt: string, voice: voices): string => {
+  switch (voice) {
+    case "brevity":
+      return `Within 4 sentences or less, answer the following prompt: ${prompt}`;
+    case "Jane Austen":
+      return `In the style of Jane Austen, answer the following prompt: ${prompt}`;
+    case "Ernest Hemingway":
+      return `In the style of Ernest Hemingway, answer the following prompt: ${prompt}`;
+    case "John Steinbeck":
+      return `In the style of John Steinbeck, answer the following prompt: ${prompt}`;
+    case "Mark Twain":
+      return `In the style of Mark Twain, answer the following prompt: ${prompt}`;
+    default:
+      return prompt;
+  }
+};
