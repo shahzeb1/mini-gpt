@@ -23,7 +23,7 @@ const Header = () => {
             </a>
             .{" "}
             <a
-              href="https://shahzeb.co"
+              href="https://blog.shahzeb.co/p/building-chatgpt-clone"
               className="underline underline-offset-4"
               target="_blank"
             >
@@ -31,7 +31,7 @@ const Header = () => {
             </a>{" "}
             &cup;{" "}
             <a
-              href="https://shahzeb.co"
+              href="https://blog.shahzeb.co/p/building-chatgpt-clone"
               className="underline underline-offset-4"
               target="_blank"
             >
