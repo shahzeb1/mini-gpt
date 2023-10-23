@@ -95,7 +95,7 @@ function App() {
       )}
 
       {!responses.length && !loading && (
-        <div className="loading flex flex-col  justify-center w-80">
+        <div className="loading fade-in flex flex-col  justify-center w-80">
           <div className="mt-4 text-sm text-slate-700 w-90 dark:text-slate-300">
             <div>
               You can ask it anything: perhaps {randomWord}. <br />
