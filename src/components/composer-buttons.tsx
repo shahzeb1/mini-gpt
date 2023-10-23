@@ -30,12 +30,12 @@ const ComposerButtons = (props: Props) => {
         <div className="mr-2 ml-2">
           <Select onValueChange={(v) => setPromptVoice(v as voices)}>
             <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Prompt Magic" />
+              <SelectValue placeholder="Author Voice" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
                 <SelectLabel>System Voices</SelectLabel>
-                <SelectItem value="none">none</SelectItem>
+                <SelectItem value="none">None</SelectItem>
                 <SelectItem value="brevity">Brevity</SelectItem>
               </SelectGroup>
               <SelectGroup>
