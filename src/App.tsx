@@ -103,7 +103,7 @@ function App() {
             {count > 0 && (
               <div className="mt-2">
                 Total prompts so far:
-                <span className="px-2 shadow-md no-underline text-white font-sans font-semibold text-sm">
+                <span className="pl-1 no-underline dark:text-white font-sans font-semibold text-sm">
                   {count}.
                 </span>
               </div>

@@ -8,12 +8,12 @@ const Header = () => {
   return (
     <div>
       <div className="flex flex-col items-start justify-between space-y-2 py-4 sm:flex-row sm:items-center sm:space-y-0 md:h-16">
-        <h2 className="text-lg font-semibold">
+        <h2 className="text-lg font-semibold md:w-24 w-full">
           <a href="/">Mini GPT</a>
         </h2>
-        <div className="flex flex-row items-center">
-          <h3 className="text-sm text-slate-500 dark:text-slate-300 w-60 lg:w-auto">
-            an experiment by{" "}
+        <div className="flex flex-row md:items-center justify-between w-full">
+          <div className="text-sm text-slate-500 dark:text-slate-300 sm:w-full">
+            experiment by{" "}
             <a
               href="https://twitter.com/shahzebdev"
               className="underline underline-offset-4"
@@ -37,8 +37,8 @@ const Header = () => {
             >
               code
             </a>
-          </h3>
-          <div className="ml-2">
+          </div>
+          <div className="">
             <ModeToggle />
           </div>
         </div>
