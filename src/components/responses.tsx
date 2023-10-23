@@ -19,13 +19,17 @@ const Responses = (props: Props) => {
   return (
     <div
       className={`flex mt-4 mb-4 ${
-        response.role === "system" ? "bg-teal-200" : "bg-slate-200"
+        response.role === "system"
+          ? "bg-slate-200 text-black"
+          : "dark:bg-gray-700 dark:text-slate-200 bg-teal-200"
       } rounded-sm`}
     >
       <div className="self-center p-4">
         <div
           className={`bot-icon rounded-sm overflow-hidden ${
-            response.role === "system" ? "bg-teal-400" : "bg-slate-400"
+            response.role === "system"
+              ? "bg-slate-400"
+              : "dark:bg-slate-400 bg-teal-400"
           }`}
         >
           {response.voice && AUTHOR_IMAGES[response.voice as authors] && (
@@ -35,7 +39,6 @@ const Responses = (props: Props) => {
                   <img
                     src={AUTHOR_IMAGES[response.voice as authors]}
                     alt={response.voice}
-                    className="opacity-70"
                   />
                 </TooltipTrigger>
                 <TooltipContent>{response.voice}</TooltipContent>
@@ -44,7 +47,7 @@ const Responses = (props: Props) => {
           )}
         </div>
       </div>
-      <div className="p-4 prose lg:prose-xl text-black">
+      <div className="p-4 prose lg:prose-xl">
         {response.userInput ? response.userInput : response.content}
       </div>
     </div>
