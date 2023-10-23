@@ -57,14 +57,4 @@ export class Database {
 
     await this.pb.collection("prompts").create(data);
   }
-
-  async saveAggregate() {
-    const date = new Date();
-    const data = {
-      day: date.getDate(),
-      month: date.getMonth(),
-      year: date.getFullYear(),
-    };
-    await this.pb.collection("prompts_month").create(data);
-  }
 }
