@@ -1,6 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { WORDS, PROMPT_VOICE, voices } from "./lib";
-import { Response, promptRequest, ResponseWithVoice } from "./clients";
+import {
+  Response,
+  promptRequest,
+  ResponseWithVoice,
+  Database,
+} from "./clients";
 
 import { Textarea } from "@/components/ui/textarea";
 
@@ -17,7 +22,9 @@ function App() {
   const [randomWord, setRandomWord] = useState("");
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [count, setCount] = useState(0);
   const [promptVoice, setPromptVoice] = useState<voices>("none");
+  const pb = useMemo(() => new Database(), []);
 
   useEffect(() => {
     if (loading === false) {
@@ -40,7 +47,17 @@ function App() {
     }, 3000);
 
     return () => clearInterval(interval);
-  });
+  }, []);
+
+  useEffect(() => {
+    if (count) {
+      return;
+    }
+
+    pb.getCount().then((count) => {
+      setCount(count);
+    });
+  }, []);
 
   async function handleGoClick() {
     setLoading(true);
@@ -59,6 +76,9 @@ function App() {
     setPrompt("");
     setResponses([...responses, userInput, resWithVoice]);
     setLoading(false);
+
+    // Save prompt to PB:
+    pb.savePrompt(prompt, promptVoice);
   }
 
   return (
@@ -77,8 +97,13 @@ function App() {
       {!responses.length && !loading && (
         <div className="loading flex flex-col items-center justify-center">
           <div className="mt-4 text-sm text-slate-700 w-90 dark:text-slate-300">
-            You can ask it pretty much anything: perhaps {randomWord}.
+            You can ask it pretty much anything: perhaps {randomWord}. <br />
           </div>
+          {count > 0 && (
+            <div className="mt-4 text-sm text-slate-700 w-90 dark:text-slate-300">
+              Total number of prompts generated so far: {count}.
+            </div>
+          )}
         </div>
       )}
 
