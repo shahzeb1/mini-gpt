@@ -51,27 +51,29 @@ const ComposerButtons = (props: Props) => {
           </Select>
         </div>
 
-        {/* <div className="invisible md:visible">
-          <Select defaultValue="llama-2-7b-chat-int8">
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Model" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectGroup>
-                <SelectLabel>Meta</SelectLabel>
-                <SelectItem value="llama-2-7b-chat-int8">
-                  llama-2-7b-chat-int8
-                </SelectItem>
-              </SelectGroup>
-              <SelectGroup>
-                <SelectLabel>Open AI</SelectLabel>
-                <SelectItem value="GPT-3" disabled>
-                  GPT-3 (coming soon)
-                </SelectItem>
-              </SelectGroup>
-            </SelectContent>
-          </Select>
-        </div> */}
+        {false && (
+          <div className="invisible md:visible">
+            <Select defaultValue="llama-2-7b-chat-int8">
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Model" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectLabel>Meta</SelectLabel>
+                  <SelectItem value="llama-2-7b-chat-int8">
+                    llama-2-7b-chat-int8
+                  </SelectItem>
+                </SelectGroup>
+                <SelectGroup>
+                  <SelectLabel>Open AI</SelectLabel>
+                  <SelectItem value="GPT-3" disabled>
+                    GPT-3 (coming soon)
+                  </SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
+        )}
       </div>
     </div>
   );
