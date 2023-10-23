@@ -97,13 +97,15 @@ function App() {
       {!responses.length && !loading && (
         <div className="loading flex flex-col items-center justify-center">
           <div className="mt-4 text-sm text-slate-700 w-90 dark:text-slate-300">
-            You can ask it pretty much anything: perhaps {randomWord}. <br />
-          </div>
-          {count > 0 && (
-            <div className="mt-4 text-sm text-slate-700 w-90 dark:text-slate-300">
-              Total number of prompts generated so far: {count}.
+            <div>
+              You can ask it anything: perhaps {randomWord}. <br />
             </div>
-          )}
+            {count > 0 && (
+              <div className="mt-2">
+                Total number of prompts generated so far: {count}.
+              </div>
+            )}
+          </div>
         </div>
       )}
 

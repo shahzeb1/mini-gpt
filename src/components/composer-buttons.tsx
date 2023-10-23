@@ -27,7 +27,7 @@ const ComposerButtons = (props: Props) => {
         {responses.length ? "Respond" : "Go"}
       </Button>
       <div className="flex">
-        <div className="mr-2">
+        <div className="mr-2 ml-2">
           <Select onValueChange={(v) => setPromptVoice(v as voices)}>
             <SelectTrigger className="w-[180px]">
               <SelectValue placeholder="Prompt Magic" />
@@ -51,7 +51,7 @@ const ComposerButtons = (props: Props) => {
           </Select>
         </div>
 
-        <div>
+        <div className="invisible md:visible">
           <Select defaultValue="llama-2-7b-chat-int8">
             <SelectTrigger className="w-[180px]">
               <SelectValue placeholder="Model" />

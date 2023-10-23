@@ -12,7 +12,7 @@ const Header = () => {
           <a href="/">Mini GPT</a>
         </h2>
         <div className="flex flex-row items-center">
-          <h3 className="text-sm text-slate-500 dark:text-slate-300">
+          <h3 className="text-sm text-slate-500 dark:text-slate-300 w-60 lg:w-auto">
             an experiment by{" "}
             <a
               href="https://shahzeb.co"
