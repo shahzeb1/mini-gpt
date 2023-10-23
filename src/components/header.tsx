@@ -15,11 +15,11 @@ const Header = () => {
           <h3 className="text-sm text-slate-500 dark:text-slate-300 w-60 lg:w-auto">
             an experiment by{" "}
             <a
-              href="https://shahzeb.co"
+              href="https://twitter.com/shahzebdev"
               className="underline underline-offset-4"
               target="_blank"
             >
-              @shahzeb
+              @shahzebdev
             </a>
             .{" "}
             <a
