@@ -19,7 +19,7 @@ import ComposerButtons from "./components/composer-buttons";
 function App() {
   const [prompt, setPrompt] = useState("");
   const [responses, setResponses] = useState<ResponseWithVoice[]>([]);
-  const [randomWord, setRandomWord] = useState("");
+  const [randomWord, setRandomWord] = useState("a question");
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [count, setCount] = useState(0);
