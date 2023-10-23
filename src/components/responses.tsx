@@ -1,13 +1,14 @@
 /**
  * Responses is a component that renders a response from the bot or the user.
  */
+import { ResponseWithVoice } from "@/clients";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { AUTHOR_IMAGES, ResponseWithVoice, authors } from "../lib";
+import { AUTHOR_IMAGES, authors } from "@/lib";
 
 interface Props {
   response: ResponseWithVoice;

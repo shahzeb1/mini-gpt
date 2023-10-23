@@ -1,3 +1,4 @@
+import { ResponseWithVoice } from "@/clients";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -8,7 +9,7 @@ import {
   SelectGroup,
   SelectLabel,
 } from "@/components/ui/select";
-import { ResponseWithVoice, voices } from "@/lib";
+import { voices } from "@/lib";
 
 interface Props {
   loading: boolean;
