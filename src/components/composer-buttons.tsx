@@ -22,7 +22,7 @@ const ComposerButtons = (props: Props) => {
   const { loading, responses, setPromptVoice, handleGoClick } = props;
 
   return (
-    <div className="flex justify-between mb-1">
+    <div className="flex mb-1">
       <Button onClick={handleGoClick} disabled={loading}>
         {responses.length ? "Respond" : "Go"}
       </Button>
@@ -51,7 +51,7 @@ const ComposerButtons = (props: Props) => {
           </Select>
         </div>
 
-        <div className="invisible md:visible">
+        {/* <div className="invisible md:visible">
           <Select defaultValue="llama-2-7b-chat-int8">
             <SelectTrigger className="w-[180px]">
               <SelectValue placeholder="Model" />
@@ -71,7 +71,7 @@ const ComposerButtons = (props: Props) => {
               </SelectGroup>
             </SelectContent>
           </Select>
-        </div>
+        </div> */}
       </div>
     </div>
   );
