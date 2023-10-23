@@ -101,9 +101,7 @@ function App() {
               You can ask it anything: perhaps {randomWord}. <br />
             </div>
             {count > 0 && (
-              <div className="mt-2">
-                Total number of prompts generated so far: {count}.
-              </div>
+              <div className="mt-2">Total prompts so far: {count}.</div>
             )}
           </div>
         </div>
