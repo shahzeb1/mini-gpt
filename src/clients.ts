@@ -1,7 +1,8 @@
 import { voices } from "./lib";
 import PocketBase from "pocketbase";
 
-const PROMPT_ENDPOINT = "https://llama.shahzeb001.workers.dev/";
+const PROMPT_ENDPOINT = import.meta.env.VITE_PROMPT_ENDPOINT ?? "";
+const POCKET_BASE_ENDPOINT = import.meta.env.VITE_POCKET_BASE_ENDPOINT ?? "";
 
 export interface Response {
   role: "system" | "user";
@@ -22,6 +23,12 @@ interface PromptRequest {
 export async function promptRequest(
   messages: PromptRequest
 ): Promise<Response> {
+  if (!PROMPT_ENDPOINT) {
+    throw new Error(
+      "Follow instructions to add VITE_PROMPT_ENDPOINT to your env variables"
+    );
+  }
+
   const r = await fetch(PROMPT_ENDPOINT, {
     method: "POST",
     headers: {
@@ -37,22 +44,29 @@ export async function promptRequest(
 
 export class Database {
   private pb: PocketBase;
-  private ENDPOINT = "https://pb.shahzeb001.workers.dev";
 
   constructor() {
-    this.pb = new PocketBase(this.ENDPOINT);
+    this.pb = new PocketBase(POCKET_BASE_ENDPOINT);
   }
 
   async getCount(): Promise<number> {
-    const r = await fetch(`${this.ENDPOINT}/api/count`);
+    if (!POCKET_BASE_ENDPOINT) {
+      return 0;
+    }
+
+    const r = await fetch(`${POCKET_BASE_ENDPOINT}/api/count`);
     const j = await r.json();
     return parseInt(j.count, 10);
   }
 
   async savePrompt(prompt: string, voice: voices) {
+    if (!POCKET_BASE_ENDPOINT) {
+      return;
+    }
+
     const data = {
-      prompt: prompt,
-      voice: voice,
+      prompt,
+      voice,
     };
 
     await this.pb.collection("prompts").create(data);
