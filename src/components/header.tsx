@@ -10,7 +10,7 @@ const Header = () => {
       <div className="flex flex-col items-start py-4">
         <div className="flex w-full justify-between">
           <h1 className="text-lg font-semibold w-full">
-            <a href="/">redis</a>
+            <a href="/">mini gpt</a>
           </h1>
           <div>
             <ModeToggle />
