@@ -10,7 +10,7 @@ Copy over the code from `pocket-base/main.pb.ts` onto your pocketbase server. [I
 
 ## Cloudflare
 
-Copy and paste the code in `cloudflare/index.ts` to your Cloudflare function.
+Copy over the code in the `cloudflare/` to your Cloudflare function.
 
 ## Frontend:
 
