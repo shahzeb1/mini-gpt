@@ -1,5 +1,7 @@
 # MINI ChatGPT: React (vite) application
 
+<img width="935" alt="image" src="https://github.com/shahzeb1/mini-gpt/assets/1383831/391ca7b1-0e44-435d-80bc-ef0011a29b7f">
+
 🚀 View live demo: [gpt.shahzeb.co](https://gpt.shahzeb.co)
 
 ## Pocketbase:
