@@ -19,11 +19,11 @@ interface Props {
 }
 
 const ComposerButtons = (props: Props) => {
-  const { loading, responses, setPromptVoice, handleGoClick } = props;
+  const { responses, setPromptVoice, handleGoClick } = props;
 
   return (
     <div className="flex mb-1">
-      <Button onClick={handleGoClick} disabled={loading}>
+      <Button onClick={handleGoClick} disabled={true}>
         {responses.length ? "Respond" : "Go"}
       </Button>
       <div className="flex">

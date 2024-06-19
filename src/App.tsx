@@ -15,6 +15,7 @@ import "./App.css";
 import Header from "./components/header";
 import Responses from "./components/responses";
 import ComposerButtons from "./components/composer-buttons";
+import Notice from "./components/notice";
 
 function App() {
   const [prompt, setPrompt] = useState("");
@@ -22,7 +23,7 @@ function App() {
   const [randomWord, setRandomWord] = useState("a question");
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(120);
   const [promptVoice, setPromptVoice] = useState<voices>("none");
   const pb = useMemo(() => new Database(), []);
 
@@ -84,6 +85,8 @@ function App() {
   return (
     <div className="container">
       <Header />
+
+      <Notice />
 
       {loading && (
         <div className="loading flex flex-col items-center justify-center">
